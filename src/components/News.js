@@ -9,9 +9,9 @@ const News = (props) => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  // document.title = `${
-  //   props.category.charAt(0).toUpperCase() + props.category.slice(1)
-  // } - NewsMonkey`;
+  document.title = `${
+    props.category.charAt(0).toUpperCase() + props.category.slice(1)
+  } - NewsMonkey`;
 
   const updateNews = async () => {
     props.setProgress(20);
@@ -28,6 +28,9 @@ const News = (props) => {
   };
 
   useEffect(() => {
+    document.title = `${
+      props.category.charAt(0).toUpperCase() + props.category.slice(1)
+    } - NewsMonkey`;
     updateNews();
   }, []);
 
