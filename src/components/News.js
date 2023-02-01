@@ -34,25 +34,6 @@ const News = (props) => {
     updateNews();
   }, []);
 
-  // const handlePrevClick = async () => {
-  //   setPage(page-1)
-
-  //   updateNews();
-  // };
-
-  // const handleNextClick = async () => {
-  //   if (
-  //     !(
-  //       page + 1 >
-  //       Math.ceil(totalResults / props.pageSize)
-  //     )
-  //   ) {
-  //     setPage(page+1)
-
-  //     updateNews();
-  //   }
-  // };
-
   const fetchMoreData = async () => {
     setPage(page + 1);
     const data = await fetch(
@@ -81,51 +62,26 @@ const News = (props) => {
       >
         <div className="container">
           <div className="row">
-            {
-              // !this.state.loading &&
-              articles.map((e) => {
-                // a unique key is required in order to use map fn
-                return (
-                  <div className="col-md-4" key={e.url}>
-                    <NewsItem
-                      title={e.title ? e.title.slice(0, 45) : ""}
-                      description={
-                        e.description ? e.description.slice(0, 88) : ""
-                      }
-                      imageUrl={e.urlToImage}
-                      newsUrl={e.url}
-                      author={e.author}
-                      date={e.publishedAt}
-                      source={e.source.name}
-                    />
-                  </div>
-                );
-              })
-            }
+            {articles.map((e) => {
+              return (
+                <div className="col-md-4" key={e.url}>
+                  <NewsItem
+                    title={e.title ? e.title.slice(0, 45) : ""}
+                    description={
+                      e.description ? e.description.slice(0, 88) : ""
+                    }
+                    imageUrl={e.urlToImage}
+                    newsUrl={e.url}
+                    author={e.author}
+                    date={e.publishedAt}
+                    source={e.source.name}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </InfiniteScroll>
-      {/* <div className="container d-flex justify-content-between">
-          <button
-            disabled={this.state.page <= 1}
-            type="button"
-            className="btn btn-dark"
-            onClick={this.handlePrevClick}
-          >
-            &larr; Previous
-          </button>
-          <button
-            disabled={
-              this.state.page + 1 >
-              Math.ceil(this.state.totalResults / props.pageSize)
-            }
-            type="button"
-            className="btn btn-dark"
-            onClick={this.handleNextClick}
-          >
-            Next &rarr;
-          </button>
-        </div> */}
     </>
   );
 };

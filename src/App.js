@@ -13,11 +13,7 @@ const App = () => {
     <div>
       <Router>
         <NavBar />
-        <LoadingBar
-          color="#f11946"
-          progress={progress}
-          // onLoaderFinished={() => setProgress(0)}
-        />
+        <LoadingBar color="#f11946" progress={progress} />
         <Switch>
           <Route exact path="/">
             <News
